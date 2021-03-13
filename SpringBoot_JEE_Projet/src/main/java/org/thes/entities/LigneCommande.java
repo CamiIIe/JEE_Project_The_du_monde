@@ -21,7 +21,7 @@ import lombok.ToString;
 
 public class LigneCommande {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_ligneCommande;
+	private Long id_ligneCommande;
 	private int quantite;
 	private double prixLigne;
 	

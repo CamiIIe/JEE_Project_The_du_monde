@@ -20,7 +20,7 @@ import lombok.ToString;
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
 public class Role {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_role;
+	private Long id_role;
 	private String role;
 	
 	@OneToMany(mappedBy="role")

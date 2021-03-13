@@ -21,7 +21,7 @@ import lombok.ToString;
 public class UtilisateurRole {
 	
 //	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private Long id_UtilisateurRole;
+	private Long id_UtilisateurRole;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_utilisateur")
