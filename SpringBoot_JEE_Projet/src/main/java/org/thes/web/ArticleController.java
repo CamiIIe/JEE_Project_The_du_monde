@@ -49,7 +49,7 @@ public class ArticleController {
 			Article pageArticlesPanierLoc= articleRepository.getOne(idArticle);
 			pageArticlesPanier.add(pageArticlesPanierLoc);
 
-			prixTotal = prixTotal + pageArticlesPanierLoc.getPrix();
+			prixTotal = prixTotal + pageArticlesPanierLoc.getPrixUnitaire();
 
 			model.addAttribute("pageArticlesPanier", pageArticlesPanier);
 			model.addAttribute("prixTotal", prixTotal);
@@ -67,8 +67,8 @@ public class ArticleController {
 	@GetMapping(path="/deleteArticlePanier")
 	public String deletePanier(Model model, Long id) {
 		for(int i=0 ; i < pageArticlesPanier.size();i++) { 
-			if (id == pageArticlesPanier.get(i).getId()) { 
-				prixTotal = prixTotal - pageArticlesPanier.get(i).getPrix();
+			if (id == pageArticlesPanier.get(i).getId_article()) { 
+				prixTotal = prixTotal - pageArticlesPanier.get(i).getPrixUnitaire();
 				pageArticlesPanier.remove(i);
 			}	  
 		}
