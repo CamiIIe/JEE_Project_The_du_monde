@@ -23,7 +23,7 @@ import lombok.ToString;
 public class Utilisateur {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_utilisateur;
+	private Long id_utilisateur;
 	private String pseudo;
 	private String motDePasse;
 	private String nom;

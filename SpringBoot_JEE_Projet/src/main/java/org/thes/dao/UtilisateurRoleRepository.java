@@ -1,8 +1,8 @@
 package org.thes.dao;
 
-import org.thes.entities.Utilisateur_Role;
+import org.thes.entities.UtilisateurRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UtilisateurRoleRepository extends JpaRepository<Utilisateur_Role, Long>{
+public interface UtilisateurRoleRepository extends JpaRepository<UtilisateurRole, Long>{
 
 }

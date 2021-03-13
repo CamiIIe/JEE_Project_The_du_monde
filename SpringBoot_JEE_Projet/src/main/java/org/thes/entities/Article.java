@@ -22,7 +22,7 @@ import lombok.ToString;
 public class Article {
 		
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_article;
+	private Long id_article;
 	private String libelle;
 	private double prixUnitaire;
 	private String image;
