@@ -20,7 +20,7 @@ import lombok.ToString;
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
 public class UtilisateurRole {
 	
-//	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_UtilisateurRole;
 	
 	@ManyToOne

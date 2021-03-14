@@ -69,7 +69,7 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-6">
 				<br> <br> <br> <br> <br>
-				<form th:action="@{products}" method="get">
+				<form th:action="@{/articles}" method="get">
 					<!-- la classe mb-3 permet d'ajouter un petit espace MarginButtom -->
 					<div class="input-group">
 						<!-- th:value="${motCle}" permet de récupérer le mot clé saisit par l'utilisateur dans la barre de recherche -->
@@ -96,19 +96,16 @@
 
 				<!-- VERSION 2 DE PRESENTATION DES ARTICLES  -->
 				<div class="row">
-					<tr th:each="p:${pageArticles.content}">
+					<tr th:each="a:${pageArticles.content}">
 						<div class="col-lg-4">
 							<div class="card mt-2 ml-5">
 								<div class="card-body">
 
-									<br> <img th:src="${p.photo}" alt="PhotoArticle"
+									<br> <img th:src="${a.image}" alt="ImageArticle"
 										style="width: 250px; height: 250px">
-									<h6 th:text="${p.designation}"></h6>
-									<h6 class="fa fa-tag" th:text="'    '+${p.prix} + ' €'"></h6>
+									<h6 th:text="${a.libelle}"></h6>
+									<h6 class="fa fa-tag" th:text="'    '+${a.prixUnitaire} + ' €'"></h6>
 									<br>
-									<h6 class="fa fa-table"
-										th:text="'  Quantité restante: '+${p.quantite}
-							  +' articles '"></h6>
 									<br>
 
 									<!-- Boutton Ajouter au panier -->
@@ -122,7 +119,7 @@
 											</button> -->
 
 										<a class="btn btn-danger"
-											th:href="@{AjoutPanier(idArticle=${p.id})}"><span
+											th:href="@{AjoutPanier(idArticle=${a.id_article})}"><span
 											class="fa fa-cart-plus"> </span> Ajouter au panier</a>
 									</div>
 									<!-- FIN Boutton Ajouter au panier -->
@@ -133,7 +130,7 @@
 									<a
 										onclick="javascript:return confirm('Voulez-vous vraiment supprimer cet article ?')"
 										class="btn btn-light"
-										th:href="@{deleteArticle(id=${p.id},page=${currentPage}, size=${size}, motCle=${motCle})}">Rupture
+										th:href="@{deleteArticle(id=${a.id_article},page=${currentPage}, size=${size}, motCle=${motCle})}">Rupture
 										de stock : Supprimer</a>
 
 								</div>
@@ -160,7 +157,7 @@
 							<!-- th:class="" càd appliquer une classe css suite à une condition: si je suis sur la page coourrante japplique la classe btn-primary sinon j'applique la classe btn -->
 							<a style="color: #E70014;"
 							th:class="${status.index==currentPage?'btn btn-secondary':'btn'}"
-							th:href="@{products(page=${status.index}, size=${size},motCle=${motCle})}"
+							th:href="@{articles(page=${status.index}, size=${size},motCle=${motCle})}"
 							th:text="${status.index+1}"></a>
 						</li>
 						<li class="page-item"><a class="page-link"

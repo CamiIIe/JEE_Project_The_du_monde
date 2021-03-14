@@ -31,7 +31,7 @@ public class ArticleController {
 			) {
 
 		Page<Article> pageArticles=articleRepository
-				.findByDesignationContains(motCle,PageRequest.of(page, size));
+				.findByLibelleContains(motCle,PageRequest.of(page, size));
 		model.addAttribute("pageArticles", pageArticles);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("size", size);

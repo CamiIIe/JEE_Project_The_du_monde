@@ -72,16 +72,16 @@
 
 						</tr>
 
-						<tr th:each="p:${pageArticlesPanier}">
+						<tr th:each="a:${pageArticlesPanier}">
 
-							<td th:text="${p.designation}"></td>
-							<td th:text="${p.prix}"></td>
-							<td><img th:src="${p.photo}" alt="PhotoArticle"
+							<td th:text="${a.libelle}"></td>
+							<td th:text="${a.prixUnitaire}"></td>
+							<td><img th:src="${a.image}" alt="PhotoArticle"
 								style="width: 50px; height: 50px"></td>
 							<td><a
 								onclick="javascript:return confirm('Voulez-vous vraiment retirer cet article de votre panier ?')"
 								class="btn btn-danger"
-								th:href="@{deleteArticlePanier(id=${p.id})}"> Supprimer</a></td>
+								th:href="@{deleteArticlePanier(id=${a.id_article})}"> Supprimer</a></td>
 						</tr>
 					</table>
 				</div>
