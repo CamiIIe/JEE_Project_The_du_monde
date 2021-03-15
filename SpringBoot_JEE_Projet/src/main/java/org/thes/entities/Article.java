@@ -24,6 +24,7 @@ public class Article {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_article;
 	private String libelle;
+	private String description;
 	private double prixUnitaire;
 	private String image;
 	

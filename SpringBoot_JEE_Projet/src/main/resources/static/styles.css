@@ -1,6 +1,6 @@
-@charset "ISO-8859-1";
+@CHARSET "ISO-8859-1";
 
-html {
+HTML {
 	background: white;
 }
 
@@ -39,7 +39,7 @@ body {
 	text-align: center;
 	margin-top: 10px;
 	padding: 5px 0px 0px 0px;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #CCC;
 	background: #E70014;
 	color: white;
 }
@@ -52,12 +52,12 @@ body {
 }
 
 .big-banner {
-	background-image: url('https://zupimages.net/up/20/17/rj9k.png');
+	background-image: URL('https://zupimages.net/up/21/11/f4r9.png');
 	background-size: 100%;
 }
 
 .input-group-text {
-	background: #E70014;
+	background: #1E5B11;
 	color: white;
 	border: 0;
 	border-radius: 0.25rem 0 0 0.25rem;
