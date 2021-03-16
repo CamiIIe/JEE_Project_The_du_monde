@@ -9,19 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.thes.entities.LigneCommande;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity
+@Entity // This tells Hibernate to make a table out of this class
 
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
 public class Article {
 		
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_article;
 	private String libelle;
 	private String description;

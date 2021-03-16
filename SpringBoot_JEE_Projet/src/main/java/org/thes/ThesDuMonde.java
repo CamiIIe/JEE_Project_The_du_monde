@@ -17,7 +17,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ThesDuMonde implements CommandLineRunner {
 
-	//@Autoware remplace le constructeur
 	@org.springframework.beans.factory.annotation.Autowired(required=true)
 	private ArticleRepository articleRepository;
 
@@ -32,11 +31,6 @@ public class ThesDuMonde implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ThesDuMonde.class, args);
-		/*
-		new SpringApplicationBuilder(ThesDuMonde.class)
-		.properties(singletonMan("server.port",8081))
-		.registerShutdownHook(true)
-		.run(args); */
 	}
 
 	@Override
@@ -65,6 +59,7 @@ public class ThesDuMonde implements CommandLineRunner {
 		utilisateurRepository.save(new Utilisateur(null,"Elise","1234","Elise","Cornet","Tours",".com","06000000", null, null));
 		utilisateurRepository.save(new Utilisateur(null,"Admin","1234","Admin","Admin","Tours",".com","06000000", null, null));
 
+		
 		//Role
 		roleRepository.save(new Role(null,"ADMIN", null));
 		roleRepository.save(new Role(null,"USER", null));

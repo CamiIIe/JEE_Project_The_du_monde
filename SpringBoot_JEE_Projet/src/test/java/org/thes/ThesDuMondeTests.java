@@ -1,10 +1,10 @@
-package com.example.demo;
+package org.thes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootJeeProjetApplicationTests {
+class ThesDuMondeTests {
 
 	@Test
 	void contextLoads() {

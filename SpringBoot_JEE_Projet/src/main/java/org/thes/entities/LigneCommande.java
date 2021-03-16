@@ -1,14 +1,16 @@
 package org.thes.entities;
 
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import org.thes.entities.Commande;
-import org.thes.entities.Article;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +20,8 @@ import lombok.ToString;
 @Entity
 
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
-
 public class LigneCommande {
+	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_ligneCommande;
 	private int quantite;
@@ -33,4 +35,9 @@ public class LigneCommande {
 	@JoinColumn(name="id_article")
 	private Article article;
 
+
+
 }
+
+	
+
