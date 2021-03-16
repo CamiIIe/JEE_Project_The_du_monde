@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		auth.inMemoryAuthentication() 
 		.withUser("Raphael").password("{noop}raphael")
-		.roles( "USER");
+		.roles("USER");
 		
 		auth.inMemoryAuthentication()
 		.withUser("Elise").password("{noop}elise")
@@ -27,12 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		 
 		auth.inMemoryAuthentication()
 		.withUser("Admin").password("{noop}admin")
-		.roles( "USER","ADMIN");
+		.roles("USER","ADMIN");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin().loginPage("/login"); 
+		http.formLogin().loginPage("/connexion"); 
 		http.authorizeRequests().antMatchers("/AjoutPanier**/**").hasRole("ADMIN"); // Je ne sais pas ce que c'est que "/AjoutPanier**/**" ??!!
 		http.authorizeRequests().antMatchers("/AjoutPanier**/**").hasRole("USER");
 		http.authorizeRequests().antMatchers("/deleteProduit**/**").hasRole("ADMIN");
