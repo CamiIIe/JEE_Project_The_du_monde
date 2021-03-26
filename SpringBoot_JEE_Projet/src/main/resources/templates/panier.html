@@ -40,21 +40,15 @@
 					 	style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6">
 					 	<span class="fa fa-cogs"></span> Mon compte </button>
 					 <div class="dropdown-menu">
-					 	<a class="dropdown-item" href="#" style="color: #1E5B11">Favoris</a>
+					 	<a class="dropdown-item" href="/AjoutFavoris" style="color: #1E5B11">Favoris</a>
 					    <div class="dropdown-divider"></div>
-					    <a class="dropdown-item" href="#" style="color: #1E5B11">Profil</a>
+					    <a class="dropdown-item" href="/profil" style="color: #1E5B11">Profil</a>
 					    <div class="dropdown-divider"></div>
 					    <a class="dropdown-item" href="#" style="color: #1E5B11">Paramètres</a>
 					    <div class="dropdown-divider"></div>
 					    <a sec:authorize="isAuthenticated()" class="dropdown-item" type="submit" th:href="@{/connexion}" value="Sign Out" style="color: #1E5B11">Déconnexion</a>
 					 </div>
 				</div>			
-	
-
-				<button type="button" class="btn" onclick="window.location='AjoutFavoris'" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-heart-o"></span> Favoris 
-				</button>
-
 			</form>
 			<!--FIN BOUTONS -->
 			

@@ -40,21 +40,11 @@
 			<form name="logoutForm" th:action="@{/logout}" method="post">
 				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Heureux de vous revoir </h7>
 				<a sec:authorize="isAuthenticated()" sec:authentication="name" style="color: #1E5B11;"></a>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;
 				<a sec:authorize="!isAuthenticated()" type="button" class="btn" th:href="@{/connexion}"
            
 					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-sign-in"></span> Connexion 
 				</a>&ensp;
-
-				<button sec:authorize="isAuthenticated()" class="btn" type="submit"
-					value="Sign Out" style="color: #1E5B11; border: 1px solid; width: 140px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-sign-out"></span> Déconnexion
-				</button>
-
-				<button type="button" class="btn" onclick="window.location='AjoutFavoris'"style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
-				<span class="fa fa-heart-o"></span> Favoris
-					
-				</button>
 				
 				<button type="button" class="btn" onclick="window.location='AjoutPanier'"
 					style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-shopping-basket"></span> Mon panier 
@@ -62,17 +52,17 @@
 					
 				<!-- DROPDOWN -->
 				<div class="btn-group">&ensp;
-					 <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
+					 <button sec:authorize="isAuthenticated()" class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
 					 	style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6">
 					 	<span class="fa fa-cogs"></span> Mon compte </button>
 					 <div class="dropdown-menu">
-					 	<a class="dropdown-item" href="#" style="color: #1E5B11">Favoris</a>
+					 	<a class="dropdown-item" href="/AjoutFavoris" style="color: #1E5B11">Favoris</a>
 					    <div class="dropdown-divider"></div>
 					    <a class="dropdown-item" href="/profil" style="color: #1E5B11">Profil</a>
 					    <div class="dropdown-divider"></div>
 					    <a class="dropdown-item" href="#" style="color: #1E5B11">Paramètres</a>
 					    <div class="dropdown-divider"></div>
-					    <a sec:authorize="isAuthenticated()" class="dropdown-item" type="submit" th:href="@{/connexion}" value="Sign Out" style="color: #1E5B11">Déconnexion</a>
+					    <button class="dropdown-item" type="submit" th:href="@{/connexion}" value="Sign Out" style="color: #1E5B11; font-weight: bold;">Déconnexion</button>
 					 </div>
 				</div>				
 			</form>
@@ -96,13 +86,13 @@
 		  <!-- The slideshow -->
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img src="https://zupimages.net/up/21/11/f4r9.png" alt="panorama" width="1100" height="500">
+		      <img src="https://zupimages.net/up/21/12/oy6n.png" alt="panorama" width="1100" height="500">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="https://zupimages.net/up/21/12/vqe4.png" alt="theiere" width="1100" height="500">
+		      <img src="https://zupimages.net/up/21/12/2v7c.png" alt="theiere" width="1100" height="500">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="https://zupimages.net/up/21/12/0irg.png" alt="producteur" width="1100" height="500">
+		      <img src="https://zupimages.net/up/21/12/ehc5.png" alt="producteur" width="1100" height="500">
 		    </div>
 		  </div>
 		  
@@ -121,24 +111,23 @@
 		<div class="card">
 			<div class="card-header" style="color: #1E5B11; background:white; font-size: 150%;">
 				Dégustez le meilleur du thé à travers une sélection exigeante de thés d'origine exceptionnels
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-					<a class="btn btn-success" style="color: #1E5B11; font-weight: bold; 
-					background: #CFE6A6" th:href="@{/ajoutArticle}">
-						<span class="fa fa-plus-square-o"> </span> Ajouter un thé au catalogue
-					</a>
-				</div>
 			</div>
 			<div class="card-body">
 			
 				<!-- DEBUT BARRE DE RECHERCHE -->
 				<div class="row d-flex justify-content-center">
-					<div class="col-6">
+					<div class="col-9">
 						<form th:action="@{/articles}" method="get">
 							<div class="input-group">
 								<input type="text" placeholder="Effectuer une recherche" name="motCle" th:value="${motCle}" class="form-control" />
 								<button class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
 									<span class="fa fa-search"></span> Rechercher
-								</button>
+								</button>&ensp;
+								<div sec:authorize="hasRole('ROLE_ADMIN')">
+									<a class="btn btn-success" style="color: #1E5B11; border: 1px solid; height: 40px; font-weight: bold; background: #CFE6A6" th:href="@{/ajoutArticle}">
+										<span class="fa fa-plus-square-o"> </span> Ajouter un thé
+									</a>
+								</div>
 							</div>
 						</form>
 					</div>
@@ -153,7 +142,7 @@
 									<br> <img th:src="${a.image}" alt="ImageArticle" style="width: 250px; height: 250px">
 									<h6 th:text="${a.libelle}"/>
 									<p th:text="${a.description}"/>
-									<h6 th:text="'    '+${a.prixUnitaire} + ' €'"/>
+									<h6 th:text="'    '+${a.prixUnitaire} + ' € - 100g'"/>
 								
 								<!-- DEBUT bouton d'ajout au panier -->
 									<div class="card-body">
@@ -161,16 +150,14 @@
 										th:href="@{AjoutPanier(idArticle=${a.id_article})}">
 											<span class="fa fa-plus-square-o"> </span> Ajouter au panier
 										</a>
-									</div>
-									<!-- FIN bouton d'ajout au panier -->
-									<!-- Début bouton ajout aux favoris -->
-									 <div class="card-body">
+										<!-- Début bouton ajout aux favoris -->
 										<a class="btn btn-success" style="color: #1E5B11; font-weight: bold; background: #CFE6A6"
 										th:href="@{AjoutFavoris(idArticle=${a.id_article})}">
-											<span class="fa fa-heart-o"> </span> Ajouter aux favoris
+											<span class="fa fa-heart-o"> </span>
 										</a>
-									</div> 
-									<!--  Fin bouton d'ajout aux favoris -->
+										<!--  Fin bouton d'ajout aux favoris -->
+									</div>
+									<!-- FIN bouton d'ajout au panier -->
 								</div>
 
 								<!-- DEBUT bouton de suppression -->
