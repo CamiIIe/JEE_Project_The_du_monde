@@ -21,40 +21,45 @@
 	<div class="header-container">
 		<div class="site-name">
 			<a href="https://zupimages.net/viewer.php?id=21/11/1ncc.png"> 
-				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
+				<a href="/articles" ><img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x"><a/>
 			</a>
 		</div>
 		<div class="header-bar">
 		
-			<!--BOUTONS -->
+			<!--DEBUT BOUTONS -->
 			<form name="logoutForm" th:action="@{/logout}" method="post">
-				<h7 style="color:#1E5B11; font-weight:bold;"> Bienvenue </h7>
+				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Heureux de vous revoir </h7>
 				<h7 sec:authentication="name" style="color:#1E5B11;font-weight:bold;"></h7>
-				
-				<button class="btn" type="submit" value="Sign Out"
-					style="color: #1E5B11; border: 1px solid; width: 140px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-sign-out"></span> Déconnexion
-				</button>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-				<button type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-heart-o"></span> Favoris 
-				</button>
+				<!-- DROPDOWN -->
+				<div class="btn-group">&ensp;
+					 <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
+					 	style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6">
+					 	<span class="fa fa-cogs"></span> Mon compte </button>
+					 <div class="dropdown-menu">
+					 	<a class="dropdown-item" href="#" style="color: #1E5B11">Favoris</a>
+					    <div class="dropdown-divider"></div>
+					    <a class="dropdown-item" href="#" style="color: #1E5B11">Profil</a>
+					    <div class="dropdown-divider"></div>
+					    <a class="dropdown-item" href="#" style="color: #1E5B11">Paramètres</a>
+					    <div class="dropdown-divider"></div>
+					    <a sec:authorize="isAuthenticated()" class="dropdown-item" type="submit" th:href="@{/connexion}" value="Sign Out" style="color: #1E5B11">Déconnexion</a>
+					 </div>
+				</div>			
+		
 			</form>
-
-			<!--BOUTONS -->
+			<!--FIN BOUTONS -->
+			
 		</div>
 	</div>
-
 	<!-- FIN HEADER -->
 
 	<div class="card-header">
-		<h6 style="color: #1E5B11; font-size: 200%;">
-			Contenu actuel de votre panier
-		</h6>
-
+		<h6 style="color: #1E5B11; font-size: 200%;">Contenu actuel de votre panier</h6>
 		<br/>
 		
-
 	<!-- DEBUT PRESENTATION DES ARTICLESS  -->
 	<div class="form-row justify-content-center">
 		<div class="col-lg-7">
@@ -80,9 +85,7 @@
 						
 						<button type="button" class="btn" onclick="window.location='articles'" style="color: #1E5B11; border: 1px solid; width: 260px; height: 40px; font-weight: bold; background: #CFE6A6">
 							<span class="fa fa-shopping-basket"></span> Ajouter d'autres articles 
-						</button>
-						<br/><br/>
-						
+						</button> <br/><br/>						
 					</table>
 				</div>
 			</div>
@@ -91,35 +94,35 @@
 		
 		<!-- DEBUT RECAPITULATIF  -->
 		<div class="col-lg-4">
-			<div class="card mt-1 ml-5">
+			<div class="card mt-2 ml-5">
 				<div class="card-body">
 					<table class="table" id="table_recapitulatif">
 						<tr>
 							<th colspan="2">RECAPITULATIF</th>
 						</tr>
 						<tr>
-							<td>Panier</td>
+							<td style="text-align:left;">Panier</td>
 							<td><span th:text="${prixTotal} + ' €'"></span></td>
 						</tr>
 						<tr>
-							<td>Frais de livraison</td>
-							<td>Gratuit</td>
+							<td style="text-align:left;">Frais de livraison</td>
+							<td>gratuits</td>
 						</tr>
 						<tr>
-							<td style="font-weight: bold;">TOTAL</td>
+							<td style="text-align:left; font-weight: bold;">TOTAL</td>
 							<td style="font-weight: bold;"><span th:text="${prixTotal} + ' €'"></span></td>
 						</tr>
 						<tr>
-							<td colspan="2"><a type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 200px; height: 40px; font-weight: bold; background: #CFE6A6" th:href="@{paiement}">
-								<span class="fa fa-shopping-basket"></span> Valider votre Panier</a>
+							<td colspan="2"><a type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 150px; height: 40px; font-weight: bold; background: #CFE6A6" th:href="@{paiement}">
+								Paiement</a><br/>
+								Nous acceptons : <span class="fa fa-cc-mastercard"></span>  <span class="fa fa-cc-visa"></span>  <span class="fa fa-cc-paypal"></span>
 							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 		</div>
-	</div>
-	<br/>
+	</div> <br/>
 	<!-- FIN RECAPITULATIF  -->
 
 	<!-- DEBUT FOOTER -->
@@ -131,13 +134,13 @@
 					<h6 class="text-uppercase font-weight-bold">Thés du monde <span class="fa fa-leaf"></span> </h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"style="width: 60px;"><br/>
 					  Une relation engagée et cultivée avec chacun de nos producteurs 
-					   pour que naisse une infinie palette de saveurs et d’émotions à chacune de vos découvertes.	
+					  pour que naisse une infinie palette de saveurs et d’émotions à chacune de vos découvertes.	
 				</div>
 
 				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 					<h6 class="text-uppercase font-weight-bold">Articles</h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>
-					<a href="#!" style="color: white;">Thés</a><br/>
+					<a href="/articles" style="color: white;">Thés</a><br/>
 					<a href="#!" style="color: white;">Infusions</a><br/>
 					<a href="#!" style="color: white;">Accessoires</a><br/>
 					<a href="#!" style="color: white;">Coffrets & Cadeaux</a>
@@ -168,7 +171,6 @@
 					<i class="fa fa-phone mr-3"></i> 02 47 29 90 67<br/>
 					<a href="#!" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
 				</div>
-
 			</div>
 		</div>
 
@@ -178,10 +180,15 @@
 				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
 			</a>
 		</div>
-		
-
 	</footer>
 	<!-- FIN FOOTER -->
+	
+	<!-- SCRIPTS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	
 	</body>
 </html>

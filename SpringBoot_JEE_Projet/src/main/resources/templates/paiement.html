@@ -21,22 +21,34 @@
 	<div class="header-container">
 		<div class="site-name">
 			<a href="https://zupimages.net/viewer.php?id=21/11/1ncc.png"> 
-				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
+				<a href="/articles" ><img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x"><a/>
 			</a>
 		</div>
 		<div class="header-bar">
 		
 			<!--DEBUT BOUTONS -->
 			<form name="logoutForm" th:action="@{/logout}" method="post">
-				<h7 style="color:#1E5B11; font-weight:bold;"> Bienvenue </h7>
-				<h7 sec:authentication="name" style="color:#1E5B11; font-weight:bold;"></h7>
-				<button class="btn" type="submit" value="Sign Out" style="color: #1E5B11; border: 1px solid; width: 140px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-sign-out"></span> Déconnexion
-				</button>
+				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Heureux de vous revoir </h7>
+				<h7 sec:authentication="name" style="color:#1E5B11;font-weight:bold;"></h7>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-				<button type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 140px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-heart-o"></span> Favoris 
-				</button>
+				<!-- DROPDOWN -->
+				<div class="btn-group">&ensp;
+					 <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
+					 	style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6">
+					 	<span class="fa fa-cogs"></span> Mon compte </button>
+					 <div class="dropdown-menu">
+					 	<a class="dropdown-item" href="#" style="color: #1E5B11">Favoris</a>
+					    <div class="dropdown-divider"></div>
+					    <a class="dropdown-item" href="#" style="color: #1E5B11">Profil</a>
+					    <div class="dropdown-divider"></div>
+					    <a class="dropdown-item" href="#" style="color: #1E5B11">Paramètres</a>
+					    <div class="dropdown-divider"></div>
+					    <a sec:authorize="isAuthenticated()" class="dropdown-item" type="submit" th:href="@{/connexion}" value="Sign Out" style="color: #1E5B11">Déconnexion</a>
+					 </div>
+				</div>			
+				
 			</form>
 			<!--FIN BOUTONS -->
 			
@@ -116,7 +128,7 @@
 				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 					<h6 class="text-uppercase font-weight-bold">Articles</h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>
-					<a href="#!" style="color: white;">Thés</a><br/>
+					<a href="/articles" style="color: white;">Thés</a><br/>
 					<a href="#!" style="color: white;">Infusions</a><br/>
 					<a href="#!" style="color: white;">Accessoires</a><br/>
 					<a href="#!" style="color: white;">Coffrets & Cadeaux</a>
@@ -136,16 +148,16 @@
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>
 					
 					<a href="https://www.google.com/search?tbm=lcl&sxsrf=ALeKk00Ur52RIvEDUFL7
-					i_2dpaitcHVcAg%3A1615909977151&ei=WdRQYMTICJDgUba_o_AN&q=au+fil+du+th%C3%A9+tours
-					&oq=au+fil+du+th%C3%A9+tours&gs_l=psy-ab.3..0j38.435179.438533.0.438661.19.15.0.4.
-					4.0.183.1384.11j4.15.0....0...1c.1.64.psy-ab..0.19.1401...35i39k1j0i67k1j0i433i131k1j
-					0i433k1j0i263i20k1j0i22i30k1.0.gEkdJhQ3pZk#rlfi=hd:;si:4708799125690100482;mv:[[47.3
-					9544737731902,0.6856679702073533],[47.395087422680966,0.6851362297926468]]" style="color: white;">
+					i_2dpaitcHVcAg%3A1615909977151&ei=WdRQYMTICJDgUba_o_AN&q=au+fil+du+th%C3%A9+tours&oq=au+fil+du+
+					th%C3%A9+tours&gs_l=psy-ab.3..0j38.435179.438533.0.438661.19.15.0.4.4.0.183.1384.11j4.15.0....0
+					...1c.1.64.psy-ab..0.19.1401...35i39k1j0i67k1j0i433i131k1j0i433k1j0i263i20k1j0i22i30k1.0.gEkdJh
+					Q3pZk#rlfi=hd:;si:4708799125690100482;mv:[[47.39544737731902,0.6856679702073533],
+					[47.395087422680966,0.6851362297926468]]" style="color: white;">
 					<i class="fa fa-map-marker mr-4"></i>Rue du Commerce 37000 Tours<br/></a>
 					
-					<a href="#!" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
+					<a href="mailto:thesdumonde@gmail.com" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
 					<i class="fa fa-phone mr-3"></i> 02 47 29 90 67<br/>
-					<a href="#!" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
+					<a href="https://twitter.com/explore" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
 				</div>
 
 			</div>
@@ -160,6 +172,13 @@
 
 	</footer>
 	<!-- FIN FOOTER -->
+	
+	<!-- SCRIPTS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 
 </body>
 </html>
