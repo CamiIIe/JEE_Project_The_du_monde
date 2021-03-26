@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
@@ -32,7 +31,8 @@
 
 				<a sec:authorize="isAuthenticated()" sec:authentication="name" style="color: #1E5B11;"></a> 
 				<a sec:authorize="!isAuthenticated()" type="button" class="btn" th:href="@{/connexion}"
-					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-sign-in"></span> Connexion 
+					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> 
+					<span class="fa fa-sign-in"></span> Connexion 
 				</a>
 
 				<button sec:authorize="isAuthenticated()" class="btn" type="submit"
@@ -40,8 +40,9 @@
 					<span class="fa fa-sign-out"></span> Déconnexion
 				</button>
 
-				<button type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-heart-o"></span> Favoris 
+				<button type="button" class="btn" onclick="window.location='AjoutFavoris'"style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
+				<span class="fa fa-heart-o"></span> Favoris
+					
 				</button>
 				
 				<button type="button" class="btn" onclick="window.location='AjoutPanier'"
@@ -55,7 +56,7 @@
 
 	<!-- DEBUT BODY -->
 	<div class="jumbotron big-banner"
-		style="height: 605px; padding-top: 150 px;">
+		style="height: 720px; padding-top: 150 px;">
 		
 		<!-- BARRE DE RECHERCHE -->
 		<div class="row d-flex justify-content-center">
@@ -98,8 +99,16 @@
 											<span class="fa fa-plus-square-o"> </span> Ajouter au panier
 										</a>
 									</div>
+									<!-- FIN bouton d'ajout au panier -->
+									<!-- Début bouton ajout aux favoris -->
+									 <div class="card-body">
+										<a class="btn btn-success" style="color: #1E5B11; font-weight: bold; background: #CFE6A6"
+										th:href="@{AjoutFavoris(idArticle=${a.id_article})}">
+											<span class="fa fa-heart-o"> </span> Ajouter aux favoris
+										</a>
+									</div> 
+									<!--  Fin bouton d'ajout aux favoris -->
 								</div>
-								<!-- FIN bouton d'ajout au panier -->
 
 								<!-- DEBUT bouton de suppression -->
 								<div sec:authorize="hasRole('ROLE_ADMIN')">

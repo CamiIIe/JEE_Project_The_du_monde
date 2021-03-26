@@ -15,23 +15,17 @@ import lombok.ToString;
 @Entity
 
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
-public class LigneCommande {
-	
+public class LigneFavoris {
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_ligneCommande;
-	private int quantite;
-	private double prixLigne;
-	
+	private Long id_lignefavoris;
+
 	@ManyToOne
-	@JoinColumn(name="id_commande")
-	private Commande commande;
+	@JoinColumn(name="id_favoris")
+	private Favoris favoris;
 	
 	@ManyToOne
 	@JoinColumn(name="id_article")
 	private Article article;
 
-
 }
-
-	
-
