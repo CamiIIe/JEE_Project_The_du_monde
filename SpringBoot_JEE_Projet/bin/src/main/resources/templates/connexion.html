@@ -14,55 +14,58 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 	<!-- ICONE SITE -->
 	<link rel="icon" type="image/png" href="https://zupimages.net/up/21/11/sm7t.png" />
+
 </head>
 <body>
-
 	<!-- DEBUT HEADER -->
 	<div class="header-container">	
 		<div class="site-name">
 			<a href="https://zupimages.net/viewer.php?id=21/11/1ncc.png"> 
-				<a href="/articles" ><img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x"><a/>
+				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
 			</a>
 		</div>
-
 		<div class="header-bar">
 		
 			<!--BOUTONS -->
 			<button type="button" class="btn" onclick="window.location='articles'"style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
 				<span class="fa fa-home"></span> Accueil
 			</button>
-			<button type="button" class="btn" onclick="window.location='AjoutFavoris'" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
+			<button type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
 				<span class="fa fa-heart-o"></span> Favoris 
 			</button>
 
 		</div>
-
 	</div>
+
 	<!-- FIN HEADER -->
 	
-	<!-- DEBUT FORMULAIRE -->
 	<div class="container mt-5">
 		<div class="card">
-			<div class="card-header" style="color: #1E5B11; font-size: 200%; background:white;">Connexion</div>
+			<div class="card-header" style="color: #1E5B11; font-size: 200%; background:white;">
+				Connexion
+			</div>
 
+			<!-- DEBUT FORMULAIRE -->
 			<form th:action="@{/connexion}" method="post">
 			<br/> <br/>
 
 				<!-- Nom d'utilisateur -->
 				<div class="form-row justify-content-center">
 					<div class="input-group-append">
-						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-user-o" ></i></span> 
+						<span class="input-group-text"><i class="fa fa-user-o"></i></span> 
 						<input type="text" id="" class="form-control" name="username" placeholder="Nom d'utilisateur" style="width: 300px; height: 30px;" value="">
 					</div>
-				</div> <br/> <br/>
+				</div>
+				<br/> <br/>
 				
 				<!-- Mot de passe -->
 				<div class="form-row justify-content-center">
 					<div class="input-group-append">
-						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-key"></i></span>
+						<span class="input-group-text"><i class="fa fa-key"></i></span>
 						<input type="password" id="" class="form-control" name="password" placeholder="Mot de passe" style="width: 300px; height: 30px;"value="">
 					</div>
-				</div> <br/>
+				</div>
+				<br/>
 				
 				<!-- Bouton Connexion -->
 				<div class="form-row justify-content-center">
@@ -71,14 +74,16 @@
 					</button>
 				</div>
 				<div class="d-flex justify-content-center links">
-					Pas encore inscrit ? <a href="/inscription" class="ml-2">S'inscrire</a>
+					Pas encore inscrit ? <a href="#" class="ml-2">S'inscrire</a>
 				</div>
 				<div class="d-flex justify-content-center links">
 					<a href="#">Mot de passe oublié ?</a>
-				</div> <br/>
-			</form>
+				</div>
+				<br/>
 		</div>
-	</div> <br/>
+	</div>
+	</form>
+	<br/>
 	<!-- FIN FORMULAIRE -->
 	
 	<!-- DEBUT FOOTER -->
@@ -92,13 +97,13 @@
 					<h6 class="text-uppercase font-weight-bold">Thés du monde <span class="fa fa-leaf"></span> </h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"style="width: 60px;"><br/>
 					  Une relation engagée et cultivée avec chacun de nos producteurs 
-					  pour que naisse une infinie palette de saveurs et d’émotions à chacune de vos découvertes.	
+					   pour que naisse une infinie palette de saveurs et d’émotions à chacune de vos découvertes.	
 				</div>
 
 				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 					<h6 class="text-uppercase font-weight-bold">Articles</h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>
-					<a href="/articles" style="color: white;">Thés</a><br/>
+					<a href="#!" style="color: white;">Thés</a><br/>
 					<a href="#!" style="color: white;">Infusions</a><br/>
 					<a href="#!" style="color: white;">Accessoires</a><br/>
 					<a href="#!" style="color: white;">Coffrets & Cadeaux</a>
@@ -125,10 +130,11 @@
 					9544737731902,0.6856679702073533],[47.395087422680966,0.6851362297926468]]" style="color: white;">
 					<i class="fa fa-map-marker mr-4"></i>Rue du Commerce 37000 Tours<br/></a>
 					
-					<a href="mailto:thesdumonde@gmail.com" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
+					<a href="#!" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
 					<i class="fa fa-phone mr-3"></i> 02 47 29 90 67<br/>
-					<a href="https://twitter.com/explore" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
+					<a href="#!" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
 				</div>
+
 			</div>
 		</div>
 
