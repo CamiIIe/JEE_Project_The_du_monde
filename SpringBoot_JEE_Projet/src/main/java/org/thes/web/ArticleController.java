@@ -7,8 +7,6 @@ import org.thes.dao.ArticleRepository;
 import org.thes.dao.UtilisateurRepository;
 import org.thes.dao.FavorisRepository;
 import org.thes.entities.Article;
-import org.thes.entities.Favoris;
-import org.thes.entities.LigneFavoris;
 import org.thes.entities.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -18,40 +18,42 @@
 </head>
 <body>
 	<!-- DEBUT HEADER -->
-	<div class="header-container">	
+	<div class="header-container">
 		<div class="site-name">
 			<a href="https://zupimages.net/viewer.php?id=21/11/1ncc.png"> 
-				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
+				<a href="/articles" ><img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x"><a/>
 			</a>
 		</div>
 		<div class="header-bar">
 		
 			<!--DEBUT BOUTONS -->
 			<form name="logoutForm" th:action="@{/logout}" method="post">
-				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Bienvenue </h7>
+				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Heureux de vous revoir </h7>
+				<h7 sec:authentication="name" style="color:#1E5B11;font-weight:bold;"></h7>
 
-				<a sec:authorize="isAuthenticated()" sec:authentication="name" style="color: #1E5B11;"></a> 
-				<a sec:authorize="!isAuthenticated()" type="button" class="btn" th:href="@{/connexion}"
-					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-sign-in"></span> Connexion 
-				</a>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-				<button sec:authorize="isAuthenticated()" class="btn" type="submit"
-					value="Sign Out" style="color: #1E5B11; border: 1px solid; width: 140px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-sign-out"></span> Déconnexion
-				</button>
-
-				<button type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-heart-o"></span> Favoris 
-				</button>
-				
-				<button type="button" class="btn" onclick="window.location='AjoutPanier'"
-					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-shopping-basket"> </span> Panier 
-				</button>
+				<!-- DROPDOWN -->
+				<div class="btn-group">&ensp;
+					 <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
+					 	style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6">
+					 	<span class="fa fa-cogs"></span> Mon compte </button>
+					 <div class="dropdown-menu">
+					 	<a class="dropdown-item" href="/AjoutFavoris" style="color: #1E5B11">Favoris</a>
+					    <div class="dropdown-divider"></div>
+					    <a class="dropdown-item" href="/profil" style="color: #1E5B11">Profil</a>
+					    <div class="dropdown-divider"></div>
+					    <a class="dropdown-item" href="#" style="color: #1E5B11">Paramètres</a>
+					    <div class="dropdown-divider"></div>
+					    <a sec:authorize="isAuthenticated()" class="dropdown-item" type="submit" th:href="@{/connexion}" value="Sign Out" style="color: #1E5B11">Déconnexion</a>
+					 </div>
+				</div>			
 			</form>
-			<!-- FIN BOUTONS -->
+			<!--FIN BOUTONS -->
+			
 		</div>
 	</div>
-
 	<!-- FIN HEADER -->
 	
 	<div class="container mt-5">
@@ -67,7 +69,7 @@
 				<!-- Libellé -->
 				<div class="form-row justify-content-center">
 					<div class="input-group-append">
-						<span class="input-group-text"><i class="fa fa-leaf"></i></span> 
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-leaf"></i></span> 
 						<input type="text" id="" class="form-control" name="libelle" placeholder="Libellé du thé" style="width: 300px; height: 30px;" value="">
 					</div>
 				</div>
@@ -76,7 +78,7 @@
 				<!-- Description -->
 				<div class="form-row justify-content-center">
 					<div class="input-group-append">
-						<span class="input-group-text"><i class="fa fa-align-left"></i></span>
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-align-left"></i></span>
 						<input type="text" id="" class="form-control" name="description" placeholder="Description" style="width: 300px; height: 30px;"value="">
 					</div>
 				</div>
@@ -85,7 +87,7 @@
 				<!-- Prix -->
 				<div class="form-row justify-content-center">
 					<div class="input-group-append">
-						<span class="input-group-text"><i class="fa fa-tag"></i></span>
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-tag"></i></span>
 						<input type="number" id="" class="form-control" name="prix" placeholder="Prix unitaire" style="width: 300px; height: 30px;"value="">
 					</div>
 				</div>
@@ -94,7 +96,7 @@
 				<!-- Image (url) -->
 				<div class="form-row justify-content-center">
 					<div class="input-group-append">
-						<span class="input-group-text"><i class="fa fa-image"></i></span>
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-image"></i></span>
 						<input type="text" id="" class="form-control" name="image" placeholder="Image (url)" style="width: 300px; height: 30px;"value="">
 					</div>
 				</div>
@@ -158,9 +160,9 @@
 					9544737731902,0.6856679702073533],[47.395087422680966,0.6851362297926468]]" style="color: white;">
 					<i class="fa fa-map-marker mr-4"></i>Rue du Commerce 37000 Tours<br/></a>
 					
-					<a href="#!" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
+					<a href="mailto:thesdumonde@gmail.com" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
 					<i class="fa fa-phone mr-3"></i> 02 47 29 90 67<br/>
-					<a href="#!" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
+					<a href="https://twitter.com/explore" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
 				</div>
 
 			</div>
@@ -176,6 +178,13 @@
 
 	</footer>
 	<!-- FIN FOOTER -->
+	
+	<!-- SCRIPTS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 
 </body>
 </html>
