@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -99,5 +100,16 @@ public class ArticleController {
 		model.addAttribute("prixTotal", prixTotal);
 		return "paiement";
 	}
+	
+	@GetMapping(path="/ajoutArticle") 
+	public String ajoutArticle(Model model){
+		return "ajoutArticle";
+	}
+	
+	@PostMapping(path="/saveArticle") 
+	public String saveArticle(String libelle, String description, double prix, String image){
+		articleRepository.save(new Article(null,libelle,description,prix,image,null));
+		return "redirect:/articles";
+	} 
 
 }

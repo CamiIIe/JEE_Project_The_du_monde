@@ -3,10 +3,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
+	
 <head>
-	<meta charset="utf-8">
-	<title>Articles</title>
+	<meta charset="utf-8" />
+	<title>Ajout d'un article</title>
 	<!-- BOOTSTRAP -->
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 	<!-- CSS -->
@@ -14,18 +14,18 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 	<!-- ICONE SITE -->
 	<link rel="icon" type="image/png" href="https://zupimages.net/up/21/11/sm7t.png" />
+
 </head>
 <body>
-
 	<!-- DEBUT HEADER -->
-	<div class="header-container">
+	<div class="header-container">	
 		<div class="site-name">
 			<a href="https://zupimages.net/viewer.php?id=21/11/1ncc.png"> 
 				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
 			</a>
 		</div>
 		<div class="header-bar">
-
+		
 			<!--DEBUT BOUTONS -->
 			<form name="logoutForm" th:action="@{/logout}" method="post">
 				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Bienvenue </h7>
@@ -51,104 +51,69 @@
 			<!-- FIN BOUTONS -->
 		</div>
 	</div>
+
 	<!-- FIN HEADER -->
-
-	<!-- DEBUT BODY -->
-	<div class="jumbotron big-banner"
-		style="height: 605px; padding-top: 150 px;">
-		
-		<!-- BARRE DE RECHERCHE -->
-		<div class="row d-flex justify-content-center">
-			<div class="col-6">
-				<br/> <br/> <br/> <br/> <br/>
-				<form th:action="@{/articles}" method="get">
-					<div class="input-group">
-						<input type="text" placeholder="Effectuer une recherche"
-							name="motCle" th:value="${motCle}" class="form-control" />
-						<button class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
-							<span class="fa fa-search"></span> Rechercher
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-
-	<!-- DEBUT PRESENTATION DES ARTICLES -->
-	</div>
+	
 	<div class="container mt-5">
 		<div class="card">
-			<div class="card-header" style="color: #1E5B11; background:white; font-size: 150%;">
-				Dégustez le meilleur du thé à travers une sélection exigeante de thés d'origine exceptionnels
-				<div sec:authorize="hasRole('ROLE_ADMIN')">
-					<a class="btn btn-success" style="color: #1E5B11; font-weight: bold; 
-					background: #CFE6A6" th:href="@{/ajoutArticle}">
-						<span class="fa fa-plus-square-o"> </span> Ajouter un thé au catalogue
-					</a>
-				</div>
+			<div class="card-header" style="color: #1E5B11; font-size: 200%; background:white;">
+				Ajout d'un article
 			</div>
-			<div class="card-body">
-				<div class="row">
-					<tr th:each="a:${pageArticles.content}">
-						<div class="col-lg-4">
-							<div class="card mt-2 ml-5">
-								<div class="card-body">
-									<br> <img th:src="${a.image}" alt="ImageArticle" style="width: 250px; height: 250px">
-									<h6 th:text="${a.libelle}"/>
-									<p th:text="${a.description}"/>
-									<h6 th:text="'    '+${a.prixUnitaire} + ' €'"/>
-								
-								<!-- DEBUT bouton d'ajout au panier -->
-									<div class="card-body">
-										<a class="btn btn-success" style="color: #1E5B11; font-weight: bold; background: #CFE6A6"
-										th:href="@{AjoutPanier(idArticle=${a.id_article})}">
-											<span class="fa fa-plus-square-o"> </span> Ajouter au panier
-										</a>
-									</div>
-								</div>
-								<!-- FIN bouton d'ajout au panier -->
 
-								<!-- DEBUT bouton de suppression -->
-								<div sec:authorize="hasRole('ROLE_ADMIN')">
-									<a onclick="javascript:return confirm('Souhaitez-vous vraiment retirer cet article ?')" class="btn btn-light"
-										th:href="@{deleteArticle(id=${a.id_article},page=${currentPage}, size=${size}, motCle=${motCle})}">
-										Rupture de stock : Supprimer
-									</a>
-								</div>
-								<!-- FIN bouton de suppression -->
-								
-							</div> <br/>
-						</div>
-					</tr>
+			<!-- DEBUT FORMULAIRE -->
+			<form th:action="@{/saveArticle}" method="post">
+			<br/> <br/>
+
+				<!-- Libellé -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text"><i class="fa fa-leaf"></i></span> 
+						<input type="text" id="" class="form-control" name="libelle" placeholder="Libellé du thé" style="width: 300px; height: 30px;" value="">
+					</div>
 				</div>
-				<!-- FIN PRESENTATION DES ARTICLES -->
-				<hr/> <hr/>
+				<br/>
 				
-				<!-- DEBUT PAGINATION -->
-				<ul class="pagination justify-content-center">
-					<ul class="nav nav-pills">
-						<li class="page-item">
-							<a class="page-link" style="color: #1E5B11;" href="#" tabindex="-1">Précédent</a>
-						</li>
-						
-						<!-- Barre de navigation -->
-						<li th:each="page,status:${pages}">
-							<a style="color: #1E5B11;"
-							th:class="${status.index==currentPage?'btn btn-success':'btn'}"
-							th:href="@{articles(page=${status.index}, size=${size},motCle=${motCle})}"
-							th:text="${status.index+1}"></a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" style="color: #1E5B11;" href="#">Suivant</a>
-						</li>
-					</ul>
-				</ul>
-				<!-- FIN PAGINATION -->
+				<!-- Description -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text"><i class="fa fa-align-left"></i></span>
+						<input type="text" id="" class="form-control" name="description" placeholder="Description" style="width: 300px; height: 30px;"value="">
+					</div>
+				</div>
+				<br/>
 				
-			</div>
+				<!-- Prix -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text"><i class="fa fa-tag"></i></span>
+						<input type="number" id="" class="form-control" name="prix" placeholder="Prix unitaire" style="width: 300px; height: 30px;"value="">
+					</div>
+				</div>
+				<br/>
+				
+				<!-- Image (url) -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text"><i class="fa fa-image"></i></span>
+						<input type="text" id="" class="form-control" name="image" placeholder="Image (url)" style="width: 300px; height: 30px;"value="">
+					</div>
+				</div>
+				<br/>
+				
+				<!-- Bouton  -->
+				<div class="form-row justify-content-center">
+					<button class="btn btn-success my-4 btn-block" type="submit"
+						style="color: #1E5B11; font-weight: bold; width: 300px; background: #CFE6A6" 
+						>Enregistrer
+					</button>
+				</div>
+				<br/>
 		</div>
 	</div>
-	<!-- FIN BODY -->
-
+	</form>
+	<br/>
+	<!-- FIN FORMULAIRE -->
+	
 	<!-- DEBUT FOOTER -->
 	<footer class="page-footer" style="color: white; background: #1E5B11;">
 		<hr/>
@@ -207,6 +172,7 @@
 				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
 			</a>
 		</div>
+		
 
 	</footer>
 	<!-- FIN FOOTER -->
