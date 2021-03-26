@@ -121,6 +121,12 @@
 		<div class="card">
 			<div class="card-header" style="color: #1E5B11; background:white; font-size: 150%;">
 				Dégustez le meilleur du thé à travers une sélection exigeante de thés d'origine exceptionnels
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+					<a class="btn btn-success" style="color: #1E5B11; font-weight: bold; 
+					background: #CFE6A6" th:href="@{/ajoutArticle}">
+						<span class="fa fa-plus-square-o"> </span> Ajouter un thé au catalogue
+					</a>
+				</div>
 			</div>
 			<div class="card-body">
 			

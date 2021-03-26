@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+<head>
+	<meta charset="utf-8" />
+	<title>Ajout d'un article</title>
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+	<!-- ICONE SITE -->
+	<link rel="icon" type="image/png" href="https://zupimages.net/up/21/11/sm7t.png" />
+
+</head>
+<body>
+	<!-- DEBUT HEADER -->
+	<div class="header-container">	
+		<div class="site-name">
+			<a href="https://zupimages.net/viewer.php?id=21/11/1ncc.png"> 
+				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
+			</a>
+		</div>
+		<div class="header-bar">
+		
+			<!--DEBUT BOUTONS -->
+			<form name="logoutForm" th:action="@{/logout}" method="post">
+				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Bienvenue </h7>
+
+				<a sec:authorize="isAuthenticated()" sec:authentication="name" style="color: #1E5B11;"></a> 
+				<a sec:authorize="!isAuthenticated()" type="button" class="btn" th:href="@{/connexion}"
+					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-sign-in"></span> Connexion 
+				</a>
+
+				<button sec:authorize="isAuthenticated()" class="btn" type="submit"
+					value="Sign Out" style="color: #1E5B11; border: 1px solid; width: 140px; height: 40px; font-weight: bold; background: #CFE6A6">
+					<span class="fa fa-sign-out"></span> Déconnexion
+				</button>
+
+				<button type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
+					<span class="fa fa-heart-o"></span> Favoris 
+				</button>
+				
+				<button type="button" class="btn" onclick="window.location='AjoutPanier'"
+					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-shopping-basket"> </span> Panier 
+				</button>
+			</form>
+			<!-- FIN BOUTONS -->
+		</div>
+	</div>
+
+	<!-- FIN HEADER -->
+	
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-header" style="color: #1E5B11; font-size: 200%; background:white;">
+				Ajout d'un article
+			</div>
+
+			<!-- DEBUT FORMULAIRE -->
+			<form th:action="@{/saveArticle}" method="post">
+			<br/> <br/>
+
+				<!-- Libellé -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text"><i class="fa fa-leaf"></i></span> 
+						<input type="text" id="" class="form-control" name="libelle" placeholder="Libellé du thé" style="width: 300px; height: 30px;" value="">
+					</div>
+				</div>
+				<br/>
+				
+				<!-- Description -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text"><i class="fa fa-align-left"></i></span>
+						<input type="text" id="" class="form-control" name="description" placeholder="Description" style="width: 300px; height: 30px;"value="">
+					</div>
+				</div>
+				<br/>
+				
+				<!-- Prix -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text"><i class="fa fa-tag"></i></span>
+						<input type="number" id="" class="form-control" name="prix" placeholder="Prix unitaire" style="width: 300px; height: 30px;"value="">
+					</div>
+				</div>
+				<br/>
+				
+				<!-- Image (url) -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text"><i class="fa fa-image"></i></span>
+						<input type="text" id="" class="form-control" name="image" placeholder="Image (url)" style="width: 300px; height: 30px;"value="">
+					</div>
+				</div>
+				<br/>
+				
+				<!-- Bouton  -->
+				<div class="form-row justify-content-center">
+					<button class="btn btn-success my-4 btn-block" type="submit"
+						style="color: #1E5B11; font-weight: bold; width: 300px; background: #CFE6A6" 
+						>Enregistrer
+					</button>
+				</div>
+				<br/>
+		</div>
+	</div>
+	</form>
+	<br/>
+	<!-- FIN FORMULAIRE -->
+	
+	<!-- DEBUT FOOTER -->
+	<footer class="page-footer" style="color: white; background: #1E5B11;">
+		<hr/>
+		<div class="container text-center text-md-left mt-5">
+			<!-- Grid row -->
+			<div class="row mt-3">
+				<!-- Grid column -->
+				<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+					<h6 class="text-uppercase font-weight-bold">Thés du monde <span class="fa fa-leaf"></span> </h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"style="width: 60px;"><br/>
+					  Une relation engagée et cultivée avec chacun de nos producteurs 
+					   pour que naisse une infinie palette de saveurs et d’émotions à chacune de vos découvertes.	
+				</div>
+
+				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+					<h6 class="text-uppercase font-weight-bold">Articles</h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>
+					<a href="#!" style="color: white;">Thés</a><br/>
+					<a href="#!" style="color: white;">Infusions</a><br/>
+					<a href="#!" style="color: white;">Accessoires</a><br/>
+					<a href="#!" style="color: white;">Coffrets & Cadeaux</a>
+				</div>
+
+				<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+					<h6 class="text-uppercase font-weight-bold">Aide - FAQ</h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>
+					<a href="#!" style="color: white;">Service Client</a><br/>
+					<a href="#!" style="color: white;">Mon compte</a><br/>
+					<a href="#!" style="color: white;">Boutiques</a><br/>
+					<a href="#!" style="color: white;">Informations Légales</a><br/>
+				</div>
+
+				<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+					<h6 class="text-uppercase font-weight-bold">Contact</h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>
+					
+					<a href="https://www.google.com/search?tbm=lcl&sxsrf=ALeKk00Ur52RIvEDUFL7
+					i_2dpaitcHVcAg%3A1615909977151&ei=WdRQYMTICJDgUba_o_AN&q=au+fil+du+th%C3%A9+tours
+					&oq=au+fil+du+th%C3%A9+tours&gs_l=psy-ab.3..0j38.435179.438533.0.438661.19.15.0.4.
+					4.0.183.1384.11j4.15.0....0...1c.1.64.psy-ab..0.19.1401...35i39k1j0i67k1j0i433i131k1j
+					0i433k1j0i263i20k1j0i22i30k1.0.gEkdJhQ3pZk#rlfi=hd:;si:4708799125690100482;mv:[[47.3
+					9544737731902,0.6856679702073533],[47.395087422680966,0.6851362297926468]]" style="color: white;">
+					<i class="fa fa-map-marker mr-4"></i>Rue du Commerce 37000 Tours<br/></a>
+					
+					<a href="#!" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
+					<i class="fa fa-phone mr-3"></i> 02 47 29 90 67<br/>
+					<a href="#!" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- COPYRIGHT -->
+		<div class="footer-copyright text-center py-3"> © 2021 - Thés du monde <a href="#" style="color: white;"></a>
+			<a href="https://zupimages.net/viewer.php?id=21/11/1ncc.png"> 
+				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
+			</a>
+		</div>
+		
+
+	</footer>
+	<!-- FIN FOOTER -->
+
+</body>
+</html>

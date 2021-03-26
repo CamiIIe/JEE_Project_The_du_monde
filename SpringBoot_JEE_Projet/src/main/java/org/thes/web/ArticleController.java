@@ -122,6 +122,17 @@ public class ArticleController {
 		model.addAttribute("prixTotal", prixTotal);
 		return "paiement";
 	}
+  
+  @GetMapping(path="/ajoutArticle") 
+	public String ajoutArticle(Model model){
+		return "ajoutArticle";
+	}
+	
+	@PostMapping(path="/saveArticle") 
+	public String saveArticle(String libelle, String description, double prix, String image){
+		articleRepository.save(new Article(null,libelle,description,prix,image,null));
+		return "redirect:/articles";
+	} 
 	
 	//Méthode favoris 
 	@GetMapping(path="/AjoutFavoris")
