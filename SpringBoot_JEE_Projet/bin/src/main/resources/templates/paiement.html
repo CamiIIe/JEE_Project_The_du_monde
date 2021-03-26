@@ -3,10 +3,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-	
+
 <head>
 	<meta charset="utf-8" />
-	<title>Connexion</title>
+	<title>Paiement</title>
 	<!-- BOOTSTRAP -->
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 	<!-- CSS -->
@@ -18,69 +18,87 @@
 <body>
 
 	<!-- DEBUT HEADER -->
-	<div class="header-container">	
+	<div class="header-container">
 		<div class="site-name">
 			<a href="https://zupimages.net/viewer.php?id=21/11/1ncc.png"> 
-				<a href="/articles" ><img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x"><a/>
+				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
 			</a>
 		</div>
-
 		<div class="header-bar">
 		
-			<!--BOUTONS -->
-			<button type="button" class="btn" onclick="window.location='articles'"style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
-				<span class="fa fa-home"></span> Accueil
-			</button>
-			<button type="button" class="btn" onclick="window.location='AjoutFavoris'" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
-				<span class="fa fa-heart-o"></span> Favoris 
-			</button>
+			<!--DEBUT BOUTONS -->
+			<form name="logoutForm" th:action="@{/logout}" method="post">
+				<h7 style="color:#1E5B11; font-weight:bold;"> Bienvenue </h7>
+				<h7 sec:authentication="name" style="color:#1E5B11; font-weight:bold;"></h7>
+				<button class="btn" type="submit" value="Sign Out" style="color: #1E5B11; border: 1px solid; width: 140px; height: 40px; font-weight: bold; background: #CFE6A6">
+					<span class="fa fa-sign-out"></span> Déconnexion
+				</button>
 
+				<button type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 140px; height: 40px; font-weight: bold; background: #CFE6A6">
+					<span class="fa fa-heart-o"></span> Favoris 
+				</button>
+			</form>
+			<!--FIN BOUTONS -->
+			
 		</div>
-
 	</div>
 	<!-- FIN HEADER -->
 	
-	<!-- DEBUT FORMULAIRE -->
+	<!-- DEBUT PAIEMENT -->
 	<div class="container mt-5">
 		<div class="card">
-			<div class="card-header" style="color: #1E5B11; font-size: 200%; background:white;">Connexion</div>
+			<div class="card-header" style="color: #1E5B11; font-size: 200%; background:white;">
+				Paiement
+			</div>
 
 			<form th:action="@{/connexion}" method="post">
 			<br/> <br/>
 
-				<!-- Nom d'utilisateur -->
+				<div class="container">
+					<span th:text="'Total : '+${prixTotal} + ' €'"></span>		
+				</div>
+				<br/>
+
+				<!-- Numéro de carte -->
 				<div class="form-row justify-content-center">
 					<div class="input-group-append">
-						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-user-o" ></i></span> 
-						<input type="text" id="" class="form-control" name="username" placeholder="Nom d'utilisateur" style="width: 300px; height: 30px;" value="">
+						<span class="input-group-text"><i class="fa fa-credit-card"></i></span> 
+						<input type="text" id="" class="form-control" name="cardNumber" placeholder="Numéro de carte valide" style="width: 300px; height: 30px;" value="">
 					</div>
-				</div> <br/> <br/>
+				</div>
+				<br/>
 				
-				<!-- Mot de passe -->
+				<!-- Date d'expiration -->
 				<div class="form-row justify-content-center">
 					<div class="input-group-append">
-						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-key"></i></span>
-						<input type="password" id="" class="form-control" name="password" placeholder="Mot de passe" style="width: 300px; height: 30px;"value="">
+						<span class="input-group-text"><i class="fa fa-calendar"></i></span>
+						<input type="text" id="" class="form-control" name="cardExpiry" placeholder="Date d'expiration MM / YY" style="width: 300px; height: 30px;" value="">
 					</div>
-				</div> <br/>
+				</div>
+				<br/>
 				
-				<!-- Bouton Connexion -->
+				<!-- CVC -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<input type="text" id="" class="form-control" name="cardCVC" placeholder="XXX" style="width: 80px;">
+					</div>
+				</div>
+				<br/>
+				
+				<!-- Bouton Validation -->
 				<div class="form-row justify-content-center">
 					<button class="btn btn-success my-4 btn-block" type="submit"
-						style="color: #1E5B11; font-weight: bold; width: 300px; background: #CFE6A6">Se connecter
+						style="color: #1E5B11; font-weight: bold; width: 300px; background: #CFE6A6">Valider
 					</button>
 				</div>
-				<div class="d-flex justify-content-center links">
-					Pas encore inscrit ? <a href="/inscription" class="ml-2">S'inscrire</a>
-				</div>
-				<div class="d-flex justify-content-center links">
-					<a href="#">Mot de passe oublié ?</a>
-				</div> <br/>
+				
 			</form>
 		</div>
-	</div> <br/>
-	<!-- FIN FORMULAIRE -->
+	</div>
 	
+	<br/>			
+	<!-- FIN PAIEMENT -->
+
 	<!-- DEBUT FOOTER -->
 	<footer class="page-footer" style="color: white; background: #1E5B11;">
 		<hr/>
@@ -92,13 +110,13 @@
 					<h6 class="text-uppercase font-weight-bold">Thés du monde <span class="fa fa-leaf"></span> </h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"style="width: 60px;"><br/>
 					  Une relation engagée et cultivée avec chacun de nos producteurs 
-					  pour que naisse une infinie palette de saveurs et d’émotions à chacune de vos découvertes.	
+					   pour que naisse une infinie palette de saveurs et d’émotions à chacune de vos découvertes.	
 				</div>
 
 				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 					<h6 class="text-uppercase font-weight-bold">Articles</h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>
-					<a href="/articles" style="color: white;">Thés</a><br/>
+					<a href="#!" style="color: white;">Thés</a><br/>
 					<a href="#!" style="color: white;">Infusions</a><br/>
 					<a href="#!" style="color: white;">Accessoires</a><br/>
 					<a href="#!" style="color: white;">Coffrets & Cadeaux</a>
@@ -125,10 +143,11 @@
 					9544737731902,0.6856679702073533],[47.395087422680966,0.6851362297926468]]" style="color: white;">
 					<i class="fa fa-map-marker mr-4"></i>Rue du Commerce 37000 Tours<br/></a>
 					
-					<a href="mailto:thesdumonde@gmail.com" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
+					<a href="#!" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
 					<i class="fa fa-phone mr-3"></i> 02 47 29 90 67<br/>
-					<a href="https://twitter.com/explore" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
+					<a href="#!" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
 				</div>
+
 			</div>
 		</div>
 
@@ -138,7 +157,6 @@
 				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
 			</a>
 		</div>
-		
 
 	</footer>
 	<!-- FIN FOOTER -->

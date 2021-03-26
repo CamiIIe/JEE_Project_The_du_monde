@@ -6,7 +6,7 @@
 	
 <head>
 	<meta charset="utf-8" />
-	<title>Connexion</title>
+	<title>Inscription</title>
 	<!-- BOOTSTRAP -->
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 	<!-- CSS -->
@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 	<!-- ICONE SITE -->
 	<link rel="icon" type="image/png" href="https://zupimages.net/up/21/11/sm7t.png" />
+
 </head>
 <body>
 
@@ -24,37 +25,66 @@
 				<a href="/articles" ><img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x"><a/>
 			</a>
 		</div>
-
-		<div class="header-bar">
-		
-			<!--BOUTONS -->
-			<button type="button" class="btn" onclick="window.location='articles'"style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
-				<span class="fa fa-home"></span> Accueil
-			</button>
-			<button type="button" class="btn" onclick="window.location='AjoutFavoris'" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
-				<span class="fa fa-heart-o"></span> Favoris 
-			</button>
-
-		</div>
-
 	</div>
 	<!-- FIN HEADER -->
-	
+
 	<!-- DEBUT FORMULAIRE -->
 	<div class="container mt-5">
 		<div class="card">
-			<div class="card-header" style="color: #1E5B11; font-size: 200%; background:white;">Connexion</div>
+			<div class="card-header" style="color: #1E5B11; font-size: 200%; background:white;">Inscription</div>
 
-			<form th:action="@{/connexion}" method="post">
+			<form th:action="@{/saveUtilisateur}" method="post">
 			<br/> <br/>
-
+			
+    		 	<legend>Coordonnées</legend>
+				<!-- Nom de l'utilisateur -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-user-o"></i></span> 
+						<input type="text" id="" class="form-control" name="lastname" placeholder="Nom" style="width: 300px; height: 30px;" value="">
+					</div>
+				</div> <br/> 
+				
+				<!-- Prénom de l'utilisateur -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-user-o"></i></span> 
+						<input type="text" id="" class="form-control" name="firstname" placeholder="Prénom" style="width: 300px; height: 30px;" value="">
+					</div>
+				</div> <br/>
+				
+				<!-- Mail de l'utilisateur -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-envelope-o"></i></span> 
+						<input type="text" id="" class="form-control" name="mail" placeholder="Email" style="width: 300px; height: 30px;" value="">
+					</div>
+				</div> <br/> 
+				
+				<!-- Adresse de l'utilisateur -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-map-o"></i></span> 
+						<input type="text" id="" class="form-control" name="address" placeholder="Adresse" style="width: 300px; height: 30px;" value="">
+					</div>
+				</div> <br/> 
+				
+				<!-- Téléphone de l'utilisateur -->
+				<div class="form-row justify-content-center">
+					<div class="input-group-append">
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-phone"></i></span> 
+						<input type="text" id="" class="form-control" name="tel" placeholder="Numéro de téléphone" style="width: 300px; height: 30px;" value="">
+					</div>
+				</div> <br/> <br/>
+				
+				<legend>Informations de connexion</legend>
 				<!-- Nom d'utilisateur -->
 				<div class="form-row justify-content-center">
 					<div class="input-group-append">
-						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-user-o" ></i></span> 
+						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-user-o"></i></span> 
 						<input type="text" id="" class="form-control" name="username" placeholder="Nom d'utilisateur" style="width: 300px; height: 30px;" value="">
 					</div>
-				</div> <br/> <br/>
+				</div> <br/> 
 				
 				<!-- Mot de passe -->
 				<div class="form-row justify-content-center">
@@ -62,20 +92,17 @@
 						<span class="input-group-text" style="color: #FFFFFF; font-weight: bold; background: #1E5B11"><i class="fa fa-key"></i></span>
 						<input type="password" id="" class="form-control" name="password" placeholder="Mot de passe" style="width: 300px; height: 30px;"value="">
 					</div>
-				</div> <br/>
+				</div> <br/> 			
 				
-				<!-- Bouton Connexion -->
+				<!-- Bouton Inscription -->
 				<div class="form-row justify-content-center">
 					<button class="btn btn-success my-4 btn-block" type="submit"
-						style="color: #1E5B11; font-weight: bold; width: 300px; background: #CFE6A6">Se connecter
+						style="color: #1E5B11; font-weight: bold; width: 300px; background: #CFE6A6">S'inscrire
 					</button>
 				</div>
 				<div class="d-flex justify-content-center links">
-					Pas encore inscrit ? <a href="/inscription" class="ml-2">S'inscrire</a>
-				</div>
-				<div class="d-flex justify-content-center links">
-					<a href="#">Mot de passe oublié ?</a>
-				</div> <br/>
+					Déjà inscrit ? <a href="/connexion" class="ml-2">Se connecter</a>
+				</div> <br/>	
 			</form>
 		</div>
 	</div> <br/>
@@ -85,7 +112,6 @@
 	<footer class="page-footer" style="color: white; background: #1E5B11;">
 		<hr/>
 		<div class="container text-center text-md-left mt-5">
-			<!-- Grid row -->
 			<div class="row mt-3">
 				<!-- Grid column -->
 				<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -125,10 +151,11 @@
 					9544737731902,0.6856679702073533],[47.395087422680966,0.6851362297926468]]" style="color: white;">
 					<i class="fa fa-map-marker mr-4"></i>Rue du Commerce 37000 Tours<br/></a>
 					
-					<a href="mailto:thesdumonde@gmail.com" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
+					<a href="#!" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
 					<i class="fa fa-phone mr-3"></i> 02 47 29 90 67<br/>
-					<a href="https://twitter.com/explore" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
+					<a href="#!" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
 				</div>
+
 			</div>
 		</div>
 
@@ -139,7 +166,6 @@
 			</a>
 		</div>
 		
-
 	</footer>
 	<!-- FIN FOOTER -->
 

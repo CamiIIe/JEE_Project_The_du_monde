@@ -12,28 +12,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{ 
-	
-		auth.inMemoryAuthentication()
-		.withUser("Camille").password("{noop}camille")
-		.roles("USER");
-		
-		auth.inMemoryAuthentication() 
-		.withUser("Raphael").password("{noop}raphael")
-		.roles("USER");
-		
-		auth.inMemoryAuthentication()
-		.withUser("Elise").password("{noop}elise")
-		.roles("USER");
-		 
-		auth.inMemoryAuthentication()
-		.withUser("Admin").password("{noop}admin")
-		.roles("USER","ADMIN");
+		auth.inMemoryAuthentication().withUser("Camille").password("{noop}camille").roles("USER");
+		auth.inMemoryAuthentication().withUser("Raphael").password("{noop}raphael").roles("USER");	
+		auth.inMemoryAuthentication().withUser("Elise").password("{noop}elise").roles("USER"); 
+		auth.inMemoryAuthentication().withUser("Admin").password("{noop}admin").roles("USER","ADMIN");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.formLogin().loginPage("/connexion"); 
-		http.authorizeRequests().antMatchers("/AjoutPanier**/**").hasRole("ADMIN"); // Je ne sais pas ce que c'est que "/AjoutPanier**/**" ??!!
+		http.authorizeRequests().antMatchers("/AjoutPanier**/**").hasRole("ADMIN"); 
 		http.authorizeRequests().antMatchers("/AjoutPanier**/**").hasRole("USER");
 		http.authorizeRequests().antMatchers("/deleteProduit**/**").hasRole("ADMIN");
 	}

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
@@ -13,16 +14,6 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 	<!-- ICONE SITE -->
 	<link rel="icon" type="image/png" href="https://zupimages.net/up/21/11/sm7t.png" />
-  	
-  	<!-- DEBUT STYLE SCROLLUP -->
-  	<style>
-		#scrollUp {
-			position: fixed;
-			bottom : 10px;
-			right: -100px;
-		}
-	</style>
-  	<!-- FIN SCROLLUP -->
 </head>
 <body>
 
@@ -30,51 +21,32 @@
 	<div class="header-container">
 		<div class="site-name">
 			<a href="https://zupimages.net/viewer.php?id=21/11/1ncc.png"> 
-				<a href="/articles" ><img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x"><a/>
+				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
 			</a>
 		</div>
-		 
 		<div class="header-bar">
 
 			<!--DEBUT BOUTONS -->
 			<form name="logoutForm" th:action="@{/logout}" method="post">
-				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Heureux de vous revoir </h7>
-				<a sec:authorize="isAuthenticated()" sec:authentication="name" style="color: #1E5B11;"></a>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Bienvenue </h7>
+
+				<a sec:authorize="isAuthenticated()" sec:authentication="name" style="color: #1E5B11;"></a> 
 				<a sec:authorize="!isAuthenticated()" type="button" class="btn" th:href="@{/connexion}"
-           
 					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-sign-in"></span> Connexion 
-				</a>&ensp;
+				</a>
 
 				<button sec:authorize="isAuthenticated()" class="btn" type="submit"
 					value="Sign Out" style="color: #1E5B11; border: 1px solid; width: 140px; height: 40px; font-weight: bold; background: #CFE6A6">
 					<span class="fa fa-sign-out"></span> Déconnexion
 				</button>
 
-				<button type="button" class="btn" onclick="window.location='AjoutFavoris'"style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6" >
-				<span class="fa fa-heart-o"></span> Favoris
-					
+				<button type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
+					<span class="fa fa-heart-o"></span> Favoris 
 				</button>
 				
 				<button type="button" class="btn" onclick="window.location='AjoutPanier'"
-					style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-shopping-basket"></span> Mon panier 
+					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-shopping-basket"> </span> Panier 
 				</button>
-					
-				<!-- DROPDOWN -->
-				<div class="btn-group">&ensp;
-					 <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
-					 	style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6">
-					 	<span class="fa fa-cogs"></span> Mon compte </button>
-					 <div class="dropdown-menu">
-					 	<a class="dropdown-item" href="#" style="color: #1E5B11">Favoris</a>
-					    <div class="dropdown-divider"></div>
-					    <a class="dropdown-item" href="/profil" style="color: #1E5B11">Profil</a>
-					    <div class="dropdown-divider"></div>
-					    <a class="dropdown-item" href="#" style="color: #1E5B11">Paramètres</a>
-					    <div class="dropdown-divider"></div>
-					    <a sec:authorize="isAuthenticated()" class="dropdown-item" type="submit" th:href="@{/connexion}" value="Sign Out" style="color: #1E5B11">Déconnexion</a>
-					 </div>
-				</div>				
 			</form>
 			<!-- FIN BOUTONS -->
 		</div>
@@ -82,73 +54,37 @@
 	<!-- FIN HEADER -->
 
 	<!-- DEBUT BODY -->
-
-		<!-- DEBUT CAROUSEL -->
-		<div id="demo" class="carousel slide" data-ride="carousel">
+	<div class="jumbotron big-banner"
+		style="height: 605px; padding-top: 150 px;">
 		
-		  <!-- Indicators -->
-		  <ul class="carousel-indicators">
-		    <li data-target="#demo" data-slide-to="0" class="active"></li>
-		    <li data-target="#demo" data-slide-to="1"></li>
-		    <li data-target="#demo" data-slide-to="2"></li>
-		  </ul>
-		  
-		  <!-- The slideshow -->
-		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-		      <img src="https://zupimages.net/up/21/11/f4r9.png" alt="panorama" width="1100" height="500">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="https://zupimages.net/up/21/12/vqe4.png" alt="theiere" width="1100" height="500">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="https://zupimages.net/up/21/12/0irg.png" alt="producteur" width="1100" height="500">
-		    </div>
-		  </div>
-		  
-		  <!-- Left and right controls -->
-		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-		    <span class="carousel-control-prev-icon"></span>
-		  </a>
-		  <a class="carousel-control-next" href="#demo" data-slide="next">
-		    <span class="carousel-control-next-icon"></span>
-		  </a>
-		</div>		
-		<!-- FIN CAROUSEL -->
+		<!-- BARRE DE RECHERCHE -->
+		<div class="row d-flex justify-content-center">
+			<div class="col-6">
+				<br/> <br/> <br/> <br/> <br/>
+				<form th:action="@{/articles}" method="get">
+					<div class="input-group">
+						<input type="text" placeholder="Effectuer une recherche"
+							name="motCle" th:value="${motCle}" class="form-control" />
+						<button class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
+							<span class="fa fa-search"></span> Rechercher
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
 
 	<!-- DEBUT PRESENTATION DES ARTICLES -->
+	</div>
 	<div class="container mt-5">
 		<div class="card">
 			<div class="card-header" style="color: #1E5B11; background:white; font-size: 150%;">
 				Dégustez le meilleur du thé à travers une sélection exigeante de thés d'origine exceptionnels
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-					<a class="btn btn-success" style="color: #1E5B11; font-weight: bold; 
-					background: #CFE6A6" th:href="@{/ajoutArticle}">
-						<span class="fa fa-plus-square-o"> </span> Ajouter un thé au catalogue
-					</a>
-				</div>
 			</div>
 			<div class="card-body">
-			
-				<!-- DEBUT BARRE DE RECHERCHE -->
-				<div class="row d-flex justify-content-center">
-					<div class="col-6">
-						<form th:action="@{/articles}" method="get">
-							<div class="input-group">
-								<input type="text" placeholder="Effectuer une recherche" name="motCle" th:value="${motCle}" class="form-control" />
-								<button class="btn" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
-									<span class="fa fa-search"></span> Rechercher
-								</button>
-							</div>
-						</form>
-					</div>
-				</div> <br/>
-				<!-- FIN BARRE DE RECHERCHE -->
-				
 				<div class="row">
 					<tr th:each="a:${pageArticles.content}">
 						<div class="col-lg-4">
-							<div class="card mt-2 ml-6">
+							<div class="card mt-2 ml-5">
 								<div class="card-body">
 									<br> <img th:src="${a.image}" alt="ImageArticle" style="width: 250px; height: 250px">
 									<h6 th:text="${a.libelle}"/>
@@ -162,16 +98,8 @@
 											<span class="fa fa-plus-square-o"> </span> Ajouter au panier
 										</a>
 									</div>
-									<!-- FIN bouton d'ajout au panier -->
-									<!-- Début bouton ajout aux favoris -->
-									 <div class="card-body">
-										<a class="btn btn-success" style="color: #1E5B11; font-weight: bold; background: #CFE6A6"
-										th:href="@{AjoutFavoris(idArticle=${a.id_article})}">
-											<span class="fa fa-heart-o"> </span> Ajouter aux favoris
-										</a>
-									</div> 
-									<!--  Fin bouton d'ajout aux favoris -->
 								</div>
+								<!-- FIN bouton d'ajout au panier -->
 
 								<!-- DEBUT bouton de suppression -->
 								<div sec:authorize="hasRole('ROLE_ADMIN')">
@@ -185,8 +113,9 @@
 							</div> <br/>
 						</div>
 					</tr>
-				</div> <hr/> <hr/>
+				</div>
 				<!-- FIN PRESENTATION DES ARTICLES -->
+				<hr/> <hr/>
 				
 				<!-- DEBUT PAGINATION -->
 				<ul class="pagination justify-content-center">
@@ -198,10 +127,9 @@
 						<!-- Barre de navigation -->
 						<li th:each="page,status:${pages}">
 							<a style="color: #1E5B11;"
-							   th:class="${status.index==currentPage?'btn btn-success':'btn'}"
-							   th:href="@{articles(page=${status.index}, size=${size},motCle=${motCle})}"
-							   th:text="${status.index+1}">
-							</a>
+							th:class="${status.index==currentPage?'btn btn-success':'btn'}"
+							th:href="@{articles(page=${status.index}, size=${size},motCle=${motCle})}"
+							th:text="${status.index+1}"></a>
 						</li>
 						<li class="page-item">
 							<a class="page-link" style="color: #1E5B11;" href="#">Suivant</a>
@@ -209,11 +137,6 @@
 					</ul>
 				</ul>
 				<!-- FIN PAGINATION -->
-				
-				<!-- SCROLLUP -->
-				<div id="scrollUp">
-					<a href="#top"><img src="https://zupimages.net/up/21/12/orzl.jpg" height="40x" width="40x"/></a>
-				</div>
 				
 			</div>
 		</div>
@@ -230,14 +153,14 @@
 				<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 					<h6 class="text-uppercase font-weight-bold">Thés du monde <span class="fa fa-leaf"></span> </h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"style="width: 60px;"><br/>
-					  Une relation engagée et cultivée avec chacun de nos producteurs pour que naisse 
-					  une infinie palette de saveurs et d’émotions à chacune de vos découvertes.	
+					  Une relation engagée et cultivée avec chacun de nos producteurs 
+					   pour que naisse une infinie palette de saveurs et d’émotions à chacune de vos découvertes.	
 				</div>
 
 				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 					<h6 class="text-uppercase font-weight-bold">Articles</h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"><br/>
-					<a href="/articles" style="color: white;">Thés</a><br/>
+					<a href="#!" style="color: white;">Thés</a><br/>
 					<a href="#!" style="color: white;">Infusions</a><br/>
 					<a href="#!" style="color: white;">Accessoires</a><br/>
 					<a href="#!" style="color: white;">Coffrets & Cadeaux</a>
@@ -264,9 +187,9 @@
 					9544737731902,0.6856679702073533],[47.395087422680966,0.6851362297926468]]" style="color: white;">
 					<i class="fa fa-map-marker mr-4"></i>Rue du Commerce 37000 Tours<br/></a>
 					
-					<a href="mailto:thesdumonde@gmail.com" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
+					<a href="#!" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
 					<i class="fa fa-phone mr-3"></i> 02 47 29 90 67<br/>
-					<a href="https://twitter.com/explore" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
+					<a href="#!" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
 				</div>
 
 			</div>
@@ -281,26 +204,6 @@
 
 	</footer>
 	<!-- FIN FOOTER -->
-	
-	<!-- SCRIPTS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-	<script>
-		jQuery(function(){
-			$(function () {
-				$(window).scroll(function () {
-					if ($(this).scrollTop() > 500 ) { 
-						$('#scrollUp').css('right','10px');
-					} else { 
-						$('#scrollUp').removeAttr( 'style' );
-					}
-				});
-			});
-		});
-	</script>
-  
+
 </body>
 </html>

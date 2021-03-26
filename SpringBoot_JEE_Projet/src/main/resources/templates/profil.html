@@ -3,10 +3,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
+	
 <head>
-	<meta charset="utf-8">
-	<title>Panier</title>
+	<meta charset="utf-8" />
+	<title>Profil</title>
 	<!-- BOOTSTRAP -->
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 	<!-- CSS -->
@@ -17,6 +17,7 @@
 </head>
 <body>
 
+
 	<!-- DEBUT HEADER -->
 	<div class="header-container">
 		<div class="site-name">
@@ -24,16 +25,21 @@
 				<a href="/articles" ><img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x"><a/>
 			</a>
 		</div>
+		 
 		<div class="header-bar">
-		
+
 			<!--DEBUT BOUTONS -->
 			<form name="logoutForm" th:action="@{/logout}" method="post">
 				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Heureux de vous revoir </h7>
-				<h7 sec:authentication="name" style="color:#1E5B11;font-weight:bold;"></h7>
-
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-
+				<a sec:authorize="isAuthenticated()" sec:authentication="name" style="color: #1E5B11;"></a>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<a sec:authorize="!isAuthenticated()" type="button" class="btn" th:href="@{/connexion}"
+					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-sign-in"></span> Connexion 
+				</a>&ensp;
+				<button type="button" class="btn" onclick="window.location='AjoutPanier'"
+					style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-shopping-basket"></span> Mon panier 
+				</button>
+					
 				<!-- DROPDOWN -->
 				<div class="btn-group">&ensp;
 					 <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
@@ -42,100 +48,41 @@
 					 <div class="dropdown-menu">
 					 	<a class="dropdown-item" href="#" style="color: #1E5B11">Favoris</a>
 					    <div class="dropdown-divider"></div>
-					    <a class="dropdown-item" href="#" style="color: #1E5B11">Profil</a>
+					    <a class="dropdown-item" href="/profil" style="color: #1E5B11">Profil</a>
 					    <div class="dropdown-divider"></div>
 					    <a class="dropdown-item" href="#" style="color: #1E5B11">Paramètres</a>
 					    <div class="dropdown-divider"></div>
 					    <a sec:authorize="isAuthenticated()" class="dropdown-item" type="submit" th:href="@{/connexion}" value="Sign Out" style="color: #1E5B11">Déconnexion</a>
 					 </div>
-				</div>			
-	
-
-				<button type="button" class="btn" onclick="window.location='AjoutFavoris'" style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6">
-					<span class="fa fa-heart-o"></span> Favoris 
-				</button>
-
+				</div>				
 			</form>
-			<!--FIN BOUTONS -->
-			
+			<!-- FIN BOUTONS -->
 		</div>
 	</div>
 	<!-- FIN HEADER -->
-
-	<div class="card-header">
-		<h6 style="color: #1E5B11; font-size: 200%;">Contenu actuel de votre panier</h6>
-		<br/>
-		
-	<!-- DEBUT PRESENTATION DES ARTICLESS  -->
-	<div class="form-row justify-content-center">
-		<div class="col-lg-7">
-			<div class="card mt-2 ml-5">
-				<div class="card-body">
-					<table class="table">
-						<tr>
-							<th>Libellé</th>
-							<th>Prix</th>
-							<th>Image</th>
-							<th></th>
-						</tr>
-
-						<tr th:each="a:${pageArticlesPanier}">
-							<td th:text="${a.libelle}"></td>
-							<td th:text="${a.prixUnitaire}"></td>
-							<td><img th:src="${a.image}" alt="ImageArticle" style="width: 50px; height: 50px"></td>
-							<td>
-								<a onclick="javascript:return confirm('Voulez-vous vraiment retirer cet article de votre panier ?')"
-								   class="btn btn-success" th:href="@{deleteArticlePanier(id=${a.id_article})}"> Supprimer</a>
-							</td>
-						</tr>
-						
-						<button type="button" class="btn" onclick="window.location='articles'" style="color: #1E5B11; border: 1px solid; width: 260px; height: 40px; font-weight: bold; background: #CFE6A6">
-							<span class="fa fa-shopping-basket"></span> Ajouter d'autres articles 
-						</button> <br/><br/>						
-					</table>
-				</div>
-			</div>
-		</div>
-		<!-- FIN PRESENTATION DES ARTICLES  -->
-		
-		<!-- DEBUT RECAPITULATIF  -->
-		<div class="col-lg-4">
-			<div class="card mt-2 ml-5">
-				<div class="card-body">
-					<table class="table" id="table_recapitulatif">
-						<tr>
-							<th colspan="2">RECAPITULATIF</th>
-						</tr>
-						<tr>
-							<td style="text-align:left;">Panier</td>
-							<td><span th:text="${prixTotal} + ' €'"></span></td>
-						</tr>
-						<tr>
-							<td style="text-align:left;">Frais de livraison</td>
-							<td>gratuits</td>
-						</tr>
-						<tr>
-							<td style="text-align:left; font-weight: bold;">TOTAL</td>
-							<td style="font-weight: bold;"><span th:text="${prixTotal} + ' €'"></span></td>
-						</tr>
-						<tr>
-							<td colspan="2"><a type="button" class="btn" style="color: #1E5B11; border: 1px solid; width: 150px; height: 40px; font-weight: bold; background: #CFE6A6" th:href="@{paiement}">
-								Paiement</a><br/>
-								Nous acceptons : <span class="fa fa-cc-mastercard"></span>  <span class="fa fa-cc-visa"></span>  <span class="fa fa-cc-paypal"></span>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
+	
+	<!-- DEBUT RECAPITULATIF -->
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-header" style="color: #1E5B11; font-size: 200%; background:white;">Profil</div>
+				<div class="container text-center text-md-center mt-5">
+					<h7 style="color:#1E5B11;font-weight:bold;"> Nom : </h7> <br/>
+					<h7 style="color:#1E5B11;font-weight:bold;"> Prénom : </h7> <br/>
+					<h7 style="color:#1E5B11;font-weight:bold;"> Adresse : </h7> <br/>
+					<h7 style="color:#1E5B11;font-weight:bold;"> Téléphone : </h7> <br/>
+					<h7 style="color:#1E5B11;font-weight:bold;"> Email : </h7> <br/>
+				</div> <br/> <br/> 		
 		</div>
 	</div> <br/>
-	<!-- FIN RECAPITULATIF  -->
-
+	<!-- FIN RECAPITULATIF -->
+	
 	<!-- DEBUT FOOTER -->
 	<footer class="page-footer" style="color: white; background: #1E5B11;">
 		<hr/>
 		<div class="container text-center text-md-left mt-5">
+			<!-- Grid row -->
 			<div class="row mt-3">
+				<!-- Grid column -->
 				<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 					<h6 class="text-uppercase font-weight-bold">Thés du monde <span class="fa fa-leaf"></span> </h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"style="width: 60px;"><br/>
@@ -173,9 +120,9 @@
 					9544737731902,0.6856679702073533],[47.395087422680966,0.6851362297926468]]" style="color: white;">
 					<i class="fa fa-map-marker mr-4"></i>Rue du Commerce 37000 Tours<br/></a>
 					
-					<a href="#!" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
+					<a href="mailto:thesdumonde@gmail.com" style="color: white;"><i class="fa fa-envelope mr-3"></i>thesdumonde@gmail.com<br/></a>
 					<i class="fa fa-phone mr-3"></i> 02 47 29 90 67<br/>
-					<a href="#!" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
+					<a href="https://twitter.com/explore" style="color: white;"><i class="fa fa-twitter mr-3"></i>thesdumonde</a><br/>
 				</div>
 			</div>
 		</div>
@@ -186,6 +133,8 @@
 				<img src="https://zupimages.net/up/21/11/1ncc.png" alt="" height="60x" width="190x">
 			</a>
 		</div>
+		
+
 	</footer>
 	<!-- FIN FOOTER -->
 	
@@ -195,6 +144,6 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-	
-	</body>
+
+</body>
 </html>
