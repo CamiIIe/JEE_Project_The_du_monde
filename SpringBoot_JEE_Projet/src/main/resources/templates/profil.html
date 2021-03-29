@@ -32,7 +32,7 @@
 			<form name="logoutForm" th:action="@{/logout}" method="post">
 				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Heureux de vous revoir </h7>
 				<a sec:authorize="isAuthenticated()" sec:authentication="name" style="color: #1E5B11;"></a>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;
 				<a sec:authorize="!isAuthenticated()" type="button" class="btn" th:href="@{/connexion}"
 					style="color: #1E5B11; border: 1px solid; width: 130px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-sign-in"></span> Connexion 
 				</a>&ensp;
