@@ -62,10 +62,10 @@ public class ThesDuMonde implements CommandLineRunner {
 		
 		
 		// Utilisateur
-		utilisateurRepository.save(new Utilisateur(null,"Camille","hello","Camille","Roumier","55 rue Victor Hugo, Poitiers","cam@y.fr","00000000", null, null));
-		utilisateurRepository.save(new Utilisateur(null,"Raphaël","salut","Raphaël","Mossion","87 rue Charles Baudelaire, Toulouse","raph@y.fr","00000000", null, null));
-		utilisateurRepository.save(new Utilisateur(null,"Elise","coucou","Elise","Cornet","23 avenue Jules Verne, Tours","el@y.fr","00000000", null, null));
-		utilisateurRepository.save(new Utilisateur(null,"Admin","bonjour","Admin","Admin","61 place Arthur Rimbaud, Paris","ad@y.fr","00000000", null, null));
+		utilisateurRepository.save(new Utilisateur(null,"Camille","camille","Camille","Roumier","55 rue Victor Hugo, Poitiers","cam@y.fr","00000000", null, null));
+		utilisateurRepository.save(new Utilisateur(null,"Raphael","raphael","Raphaël","Mossion","87 rue Charles Baudelaire, Toulouse","raph@y.fr","00000000", null, null));
+		utilisateurRepository.save(new Utilisateur(null,"Elise","elise","Elise","Cornet","23 avenue Jules Verne, Tours","el@y.fr","00000000", null, null));
+		utilisateurRepository.save(new Utilisateur(null,"Admin","admin","Admin","Admin","61 place Arthur Rimbaud, Paris","ad@y.fr","00000000", null, null));
 
 		
 		// Role

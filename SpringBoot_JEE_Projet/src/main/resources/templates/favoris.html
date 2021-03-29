@@ -30,10 +30,7 @@
 			<form name="logoutForm" th:action="@{/logout}" method="post">
 				<h7 sec:authorize="isAuthenticated()" style="color:#1E5B11;font-weight:bold;"> Heureux de vous revoir </h7>
 				<h7 sec:authentication="name" style="color:#1E5B11;font-weight:bold;"></h7>
-
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-
+				&emsp;
 				<button type="button" class="btn" onclick="window.location='AjoutPanier'"
 					style="color: #1E5B11; border: 1px solid; width: 160px; height: 40px; font-weight: bold; background: #CFE6A6"> <span class="fa fa-shopping-basket"></span> Mon panier 
 				</button>
@@ -87,8 +84,14 @@
 							<td th:text="${a.prixUnitaire}"></td>
 							<td><img th:src="${a.image}" alt="ImageArticle" style="width: 50px; height: 50px"></td>
 							<td>
+								<a class="btn btn-success" style="color: #1E5B11; font-weight: bold; background: #CFE6A6"
+									th:href="@{AjoutPanier(idArticle=${a.id_article})}" onclick="javascript:return confirm('Voulez-vous vraiment ajouter cet article à votre panier ?')">
+									<span class="fa fa-shopping-basket"> </span>
+								</a>
+							</td>
+							<td>
 								<a onclick="javascript:return confirm('Voulez-vous vraiment retirer cet article de vos favoris ?')"
-								   class="btn btn-success" th:href="@{deleteFavoris(id=${a.id_article})}"> Supprimer</a>
+								   class="btn btn-success" th:href="@{deleteFavoris(id=${a.id_article})}">Supprimer</a>
 							</td>
 						</tr>
 						
